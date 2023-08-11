@@ -1,0 +1,20 @@
+{
+  "name": "current-prices",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/gtag.js": "^0.0.12",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "@sentry/browser": "^7.61.1",
+    "lit": "^2.8.0"
+  }
+}
