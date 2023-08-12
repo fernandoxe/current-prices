@@ -89,10 +89,6 @@ export class AppHome extends LitElement {
     }
   };
 
-  connectedCallback() {
-    super.connectedCallback();
-  }
-
   private handleClick(event: CustomEvent) {
     if(!this.usdToday) {
       this.getUsdValue();
