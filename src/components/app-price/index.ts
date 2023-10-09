@@ -21,6 +21,7 @@ export class AppPrice extends LitElement {
       justify-content: center;
       flex-wrap: wrap;
       position: relative;
+      white-space: nowrap;
     }
     .bottom-info {
       font-size: 0.75rem;
