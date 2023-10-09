@@ -80,6 +80,13 @@ export class AppPrices extends LitElement {
     return `${day} de ${month}`;
   }
 
+  private getTime() {
+    const date = new Date();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    return `${hours}:${minutes}`;
+  }
+
   private getPrice(id: string) {
     const sector = stadiumSectors[id];
     const priceRange = sector?.['price-range'] || '';
@@ -184,7 +191,7 @@ export class AppPrices extends LitElement {
           ></app-group-prices>
         </div>
         <div class="final">
-          Los precios de reventa recomendados están calculados en base al valor del dólar de hoy ${this.getToday()}.
+          Los precios de reventa recomendados están calculados en base al valor del dólar de ahora, ${this.getToday()} a las ${this.getTime()}.
         </div>
       </div>
     `;
