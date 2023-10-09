@@ -15,6 +15,12 @@ export class AppGroupPrices extends LitElement {
       align-items: center;
       gap: 0.875rem;
     }
+    .container.card {
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background-color: #f1f1f1;
+      box-shadow: 1px 1px 13px rgba(0, 0, 0, 0.13);
+    }
 
     .row {
       width: 100%;
@@ -25,6 +31,9 @@ export class AppGroupPrices extends LitElement {
     }
     .row > div {
       width: 33.33%;
+    }
+    .row-header {
+      align-items: flex-start;
     }
 
     .row-title {
@@ -43,6 +52,11 @@ export class AppGroupPrices extends LitElement {
       font-weight: bold;
       font-size: 0.75rem;
       text-align: center;
+    }
+    .vip-name {
+      font-size: 0.75rem;
+      font-weight: normal;
+      font-style: italic;
     }
 
     .colored {
@@ -104,20 +118,28 @@ export class AppGroupPrices extends LitElement {
     vip: 0,
   };
 
+  @property()
+  vipPackage = '';
+
   render() {
     return html`
       <h4>
         Entradas compradas el ${this.date.sale}:
       </h4>
-      <div class="container">
-        <div class="row">
+      <div class="container card">
+        <div class="row row-header">
           <div class="column-title">
           </div>
           <div class="column-title">
             General
           </div>
           <div class="column-title">
-            VIP
+            <div>VIP</div>
+            ${this.peso.vip > 0 ?
+              html`<div class="vip-name">(${this.vipPackage})</div>`
+              :
+              html``
+            }
           </div>
         </div>
         <div class="row">
