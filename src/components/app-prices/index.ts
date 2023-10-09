@@ -82,9 +82,7 @@ export class AppPrices extends LitElement {
 
   private getTime() {
     const date = new Date();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    return `${hours}:${minutes}`;
+    return date.toISOString().slice(11, 16);
   }
 
   private getPrice(id: string) {
