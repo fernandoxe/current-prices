@@ -12,6 +12,8 @@ export class AppPrices extends LitElement {
     h3 {
       margin: 0;
       font-size: 1rem;
+      width: 100%;
+      text-align: center;
     }
     .container {
       display: flex;
@@ -27,6 +29,9 @@ export class AppPrices extends LitElement {
     }
     .text {
       vertical-align: middle;
+    }
+    .group-prices-container {
+      width: 100%;
     }
     .final {
       font-size: 0.75rem;
@@ -158,20 +163,26 @@ export class AppPrices extends LitElement {
             ${this.priceid ? stadiumSectors[this.priceid].name : ''}
           </span>
         </h3>
-        <app-group-prices
-          .date=${{sale: SALE_DAY_1, today: this.getToday()}}
-          .usdValue=${{sale: USD_VALUE_1, today: this.usdToday}}
-          .peso=${this.peso[0]}
-          .usd=${this.usd[0]}
-          .recommended=${this.recommended[0]}
-        ></app-group-prices>
-        <app-group-prices
-          .date=${{sale: SALE_DAY_2, today: this.getToday()}}
-          .usdValue=${{sale: USD_VALUE_2, today: this.usdToday}}
-          .peso=${this.peso[1]}
-          .usd=${this.usd[1]}
-          .recommended=${this.recommended[1]}
-        ></app-group-prices>
+        <div class="group-prices-container">
+          <app-group-prices
+            .date=${{sale: SALE_DAY_1, today: this.getToday()}}
+            .usdValue=${{sale: USD_VALUE_1, today: this.usdToday}}
+            .peso=${this.peso[0]}
+            .usd=${this.usd[0]}
+            .recommended=${this.recommended[0]}
+            .vipPackage=${this.vip}
+          ></app-group-prices>
+        </div>
+        <div class="group-prices-container">
+          <app-group-prices
+            .date=${{sale: SALE_DAY_2, today: this.getToday()}}
+            .usdValue=${{sale: USD_VALUE_2, today: this.usdToday}}
+            .peso=${this.peso[1]}
+            .usd=${this.usd[1]}
+            .recommended=${this.recommended[1]}
+            .vipPackage=${this.vip}
+          ></app-group-prices>
+        </div>
         <div class="final">
           Los precios de reventa recomendados están calculados en base al valor del dólar de hoy ${this.getToday()}.
         </div>
