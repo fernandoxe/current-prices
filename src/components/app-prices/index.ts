@@ -4,7 +4,14 @@ import { VIPPackagesRanges, stadiumRanges, stadiumSectors } from '../../data';
 import '../app-price';
 import { styleMap } from 'lit/directives/style-map.js';
 import '../app-group-prices';
-import { SALE_DAY_1, SALE_DAY_2, USD_VALUE_1, USD_VALUE_2 } from '../../data';
+import {
+  SALE_DAY_1,
+  SALE_DAY_2,
+  SALE_DAY_3,
+  USD_VALUE_1,
+  USD_VALUE_2,
+  USD_VALUE_3
+} from '../../data';
 
 @customElement('app-prices')
 export class AppPrices extends LitElement {
@@ -98,11 +105,13 @@ export class AppPrices extends LitElement {
     const serviceChargeValues = [
       price * serviceCharge,
       price * serviceCharge,
+      price * serviceCharge,
     ];
 
     const priceValues = [
       price + serviceChargeValues[0],
       price + serviceChargeValues[1],
+      price + serviceChargeValues[2],
     ];
 
     const usdValues = [
@@ -113,6 +122,10 @@ export class AppPrices extends LitElement {
       {
         price: priceValues[1] / USD_VALUE_2,
         vip: vipPrice / USD_VALUE_2,
+      },
+      {
+        price: priceValues[2] / USD_VALUE_3,
+        vip: vipPrice / USD_VALUE_3,
       },
     ];
 
@@ -127,6 +140,11 @@ export class AppPrices extends LitElement {
         serviceCharge: serviceChargeValues[1],
         vip: 0,
       },
+      {
+        price,
+        serviceCharge: serviceChargeValues[2],
+        vip: 0,
+      },
     ];
     
     this.usd = [
@@ -138,6 +156,10 @@ export class AppPrices extends LitElement {
         price: Math.round(priceValues[1] / USD_VALUE_2),
         vip: Math.round(vipPrice / USD_VALUE_2),
       },
+      {
+        price: Math.round(priceValues[2] / USD_VALUE_3),
+        vip: Math.round(vipPrice / USD_VALUE_3),
+      },
     ];
 
     this.recommended = [
@@ -148,6 +170,10 @@ export class AppPrices extends LitElement {
       {
         price: Math.round(usdValues[1].price * this.usdToday),
         vip: Math.round(usdValues[1].vip * this.usdToday),
+      },
+      {
+        price: Math.round(usdValues[2].price * this.usdToday),
+        vip: Math.round(usdValues[2].vip * this.usdToday),
       },
     ];
   }
@@ -185,6 +211,16 @@ export class AppPrices extends LitElement {
             .peso=${this.peso[1]}
             .usd=${this.usd[1]}
             .recommended=${this.recommended[1]}
+            .vipPackage=${this.vip}
+          ></app-group-prices>
+        </div>
+        <div class="group-prices-container">
+          <app-group-prices
+            .date=${{sale: SALE_DAY_3, today: this.getToday()}}
+            .usdValue=${{sale: USD_VALUE_3, today: this.usdToday}}
+            .peso=${this.peso[2]}
+            .usd=${this.usd[2]}
+            .recommended=${this.recommended[2]}
             .vipPackage=${this.vip}
           ></app-group-prices>
         </div>
